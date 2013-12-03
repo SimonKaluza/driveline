@@ -1,0 +1,16 @@
+// AppDelegate.m
+//
+// Simon Kaluza
+// University of New Haven
+// Master's Project -- Driveline
+
+#import "AppDelegate.h"
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    return YES;
+}
+
+@end

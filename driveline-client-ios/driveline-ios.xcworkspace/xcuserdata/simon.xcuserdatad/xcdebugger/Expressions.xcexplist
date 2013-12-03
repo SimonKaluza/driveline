@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[NewDriversListViewController groupListUpdateSucceeded]:NewDriversListViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[DataManager sharedSingleton].usersGroups.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LoginViewController tryLogin]:LoginViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "passwordTextField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainTabViewController viewDidLoad]:MainTabViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self driversListVc]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

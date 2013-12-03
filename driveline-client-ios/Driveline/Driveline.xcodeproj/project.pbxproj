@@ -1,0 +1,673 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F408B58E1822039D00160136 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32967181C59970072958D /* iAd.framework */; };
+		F43031B1183B1CC400DB84B2 /* libPods-MBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43031B0183B1CC400DB84B2 /* libPods-MBProgressHUD.a */; };
+		F4BB8C65183C46B8001DFBC4 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB8C64183C46B8001DFBC4 /* LocationManager.m */; };
+		F4BB8C67183C4826001DFBC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BB8C66183C4826001DFBC4 /* CoreLocation.framework */; };
+		F4BD37A5182C8ABA0084AFC8 /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BD37A3182C8ABA0084AFC8 /* CreateGroupViewController.m */; };
+		F4BD37A8182C92270084AFC8 /* CreateGroupAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4BD37A7182C92270084AFC8 /* CreateGroupAccount.storyboard */; };
+		F4BE4487183077BF00B6DA79 /* DriversListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BE4485183077BF00B6DA79 /* DriversListDetailViewController.m */; };
+		F4BE4488183077BF00B6DA79 /* DriversListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BE4486183077BF00B6DA79 /* DriversListDetailViewController.xib */; };
+		F4C32937181C57F10072958D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32936181C57F10072958D /* Foundation.framework */; };
+		F4C32939181C57F10072958D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32938181C57F10072958D /* CoreGraphics.framework */; };
+		F4C3293B181C57F10072958D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C3293A181C57F10072958D /* UIKit.framework */; };
+		F4C32941181C57F10072958D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4C3293F181C57F10072958D /* InfoPlist.strings */; };
+		F4C32943181C57F10072958D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32942181C57F10072958D /* main.m */; };
+		F4C32947181C57F10072958D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32946181C57F10072958D /* AppDelegate.m */; };
+		F4C32949181C57F10072958D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C32948181C57F10072958D /* Images.xcassets */; };
+		F4C32950181C57F10072958D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C3294F181C57F10072958D /* XCTest.framework */; };
+		F4C32951181C57F10072958D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32936181C57F10072958D /* Foundation.framework */; };
+		F4C32952181C57F10072958D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C3293A181C57F10072958D /* UIKit.framework */; };
+		F4C3295A181C57F10072958D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4C32958181C57F10072958D /* InfoPlist.strings */; };
+		F4C3295C181C57F10072958D /* DrivelineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3295B181C57F10072958D /* DrivelineTests.m */; };
+		F4C32966181C58980072958D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C32965181C58980072958D /* MainStoryboard.storyboard */; };
+		F4C3296A181C59B30072958D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32969181C59B30072958D /* MessageUI.framework */; };
+		F4C32974181C5A060072958D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3296C181C5A060072958D /* LoginViewController.m */; };
+		F4C32975181C5A060072958D /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3296E181C5A060072958D /* CreateAccountViewController.m */; };
+		F4C32976181C5A060072958D /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32970181C5A060072958D /* MainTabViewController.m */; };
+		F4C32977181C5A060072958D /* StartDrivingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32972181C5A060072958D /* StartDrivingViewController.m */; };
+		F4C32978181C5A060072958D /* StartDrivingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C32973181C5A060072958D /* StartDrivingViewController.xib */; };
+		F4C3298A181C5A5C0072958D /* DriversListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32982181C5A5C0072958D /* DriversListCell.m */; };
+		F4C3298B181C5A5C0072958D /* ProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32984181C5A5C0072958D /* ProfileHeaderCell.m */; };
+		F4C3298C181C5A5C0072958D /* ProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C32985181C5A5C0072958D /* ProfileHeaderCell.xib */; };
+		F4C32996181C5A9B0072958D /* MyGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3298F181C5A9B0072958D /* MyGroupsViewController.m */; };
+		F4C32997181C5A9B0072958D /* MyGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C32990181C5A9B0072958D /* MyGroupsViewController.xib */; };
+		F4C32998181C5A9B0072958D /* MyGroupsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32992181C5A9B0072958D /* MyGroupsDetailViewController.m */; };
+		F4C32999181C5A9B0072958D /* MyGroupsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C32993181C5A9B0072958D /* MyGroupsDetailViewController.xib */; };
+		F4C329B0181C5AC50072958D /* EditableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C329AF181C5AC50072958D /* EditableDetailCell.m */; };
+		F4C329B5181C5B1A0072958D /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C329B2181C5B1A0072958D /* PhoneNumberFormatter.m */; };
+		F4C32A88181CD0E30072958D /* libDrivelineRestClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32A87181CD0E30072958D /* libDrivelineRestClient.a */; };
+		F4C32A8A181CD0EA0072958D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32A89181CD0EA0072958D /* libPods.a */; };
+		F4C32A8C181CD8F70072958D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32A8B181CD8F70072958D /* SystemConfiguration.framework */; };
+		F4C32A8E181CD8FE0072958D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C32A8D181CD8FE0072958D /* MobileCoreServices.framework */; };
+		F4C32A92181CDB630072958D /* NewDriversListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C32A90181CDB630072958D /* NewDriversListViewController.m */; };
+		F4C32A93181CDB630072958D /* NewDriversListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C32A91181CDB630072958D /* NewDriversListViewController.xib */; };
+		F4F89505183312EE002CBD6B /* InsetAdjustedRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F89504183312EE002CBD6B /* InsetAdjustedRefreshControl.m */; };
+		F4FAFF33181D6D680024C026 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FAFF32181D6D680024C026 /* DataManager.m */; };
+		F4FAFF35181D73890024C026 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FAFF34181D73890024C026 /* Security.framework */; };
+		F4FAFF37181D74850024C026 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FAFF36181D74850024C026 /* KeychainItemWrapper.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4C32953181C57F10072958D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4C3292B181C57F10072958D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4C32932181C57F10072958D;
+			remoteInfo = Driveline;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F43031B0183B1CC400DB84B2 /* libPods-MBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MBProgressHUD.a"; path = "../Pods/build/Debug-iphoneos/libPods-MBProgressHUD.a"; sourceTree = "<group>"; };
+		F4BB8C63183C46B8001DFBC4 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		F4BB8C64183C46B8001DFBC4 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		F4BB8C66183C4826001DFBC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F4BD37A2182C8ABA0084AFC8 /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
+		F4BD37A3182C8ABA0084AFC8 /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
+		F4BD37A7182C92270084AFC8 /* CreateGroupAccount.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateGroupAccount.storyboard; sourceTree = "<group>"; };
+		F4BE4484183077BF00B6DA79 /* DriversListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriversListDetailViewController.h; sourceTree = "<group>"; };
+		F4BE4485183077BF00B6DA79 /* DriversListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriversListDetailViewController.m; sourceTree = "<group>"; };
+		F4BE4486183077BF00B6DA79 /* DriversListDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriversListDetailViewController.xib; sourceTree = "<group>"; };
+		F4C32933181C57F10072958D /* Driveline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Driveline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C32936181C57F10072958D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F4C32938181C57F10072958D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F4C3293A181C57F10072958D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F4C3293E181C57F10072958D /* Driveline-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Driveline-Info.plist"; sourceTree = "<group>"; };
+		F4C32940181C57F10072958D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4C32942181C57F10072958D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4C32944181C57F10072958D /* Driveline-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Driveline-Prefix.pch"; sourceTree = "<group>"; };
+		F4C32945181C57F10072958D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F4C32946181C57F10072958D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F4C32948181C57F10072958D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F4C3294E181C57F10072958D /* DrivelineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrivelineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C3294F181C57F10072958D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F4C32957181C57F10072958D /* DrivelineTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DrivelineTests-Info.plist"; sourceTree = "<group>"; };
+		F4C32959181C57F10072958D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4C3295B181C57F10072958D /* DrivelineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrivelineTests.m; sourceTree = "<group>"; };
+		F4C32965181C58980072958D /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		F4C32967181C59970072958D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		F4C32969181C59B30072958D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F4C3296B181C5A060072958D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F4C3296C181C5A060072958D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F4C3296D181C5A060072958D /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		F4C3296E181C5A060072958D /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
+		F4C3296F181C5A060072958D /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
+		F4C32970181C5A060072958D /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
+		F4C32971181C5A060072958D /* StartDrivingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartDrivingViewController.h; sourceTree = "<group>"; };
+		F4C32972181C5A060072958D /* StartDrivingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartDrivingViewController.m; sourceTree = "<group>"; };
+		F4C32973181C5A060072958D /* StartDrivingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartDrivingViewController.xib; sourceTree = "<group>"; };
+		F4C32981181C5A5C0072958D /* DriversListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriversListCell.h; sourceTree = "<group>"; };
+		F4C32982181C5A5C0072958D /* DriversListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriversListCell.m; sourceTree = "<group>"; };
+		F4C32983181C5A5C0072958D /* ProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderCell.h; sourceTree = "<group>"; };
+		F4C32984181C5A5C0072958D /* ProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderCell.m; sourceTree = "<group>"; };
+		F4C32985181C5A5C0072958D /* ProfileHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderCell.xib; sourceTree = "<group>"; };
+		F4C3298E181C5A9B0072958D /* MyGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGroupsViewController.h; sourceTree = "<group>"; };
+		F4C3298F181C5A9B0072958D /* MyGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGroupsViewController.m; sourceTree = "<group>"; };
+		F4C32990181C5A9B0072958D /* MyGroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGroupsViewController.xib; sourceTree = "<group>"; };
+		F4C32991181C5A9B0072958D /* MyGroupsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGroupsDetailViewController.h; sourceTree = "<group>"; };
+		F4C32992181C5A9B0072958D /* MyGroupsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGroupsDetailViewController.m; sourceTree = "<group>"; };
+		F4C32993181C5A9B0072958D /* MyGroupsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGroupsDetailViewController.xib; sourceTree = "<group>"; };
+		F4C329AE181C5AC50072958D /* EditableDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableDetailCell.h; sourceTree = "<group>"; };
+		F4C329AF181C5AC50072958D /* EditableDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableDetailCell.m; sourceTree = "<group>"; };
+		F4C329B1181C5B1A0072958D /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
+		F4C329B2181C5B1A0072958D /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
+		F4C32A87181CD0E30072958D /* libDrivelineRestClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDrivelineRestClient.a; path = "../../../../Library/Developer/Xcode/DerivedData/driveline-ios-abqulepcsyhwbsehoctzcmcntnmp/Build/Products/Debug-iphoneos/libDrivelineRestClient.a"; sourceTree = "<group>"; };
+		F4C32A89181CD0EA0072958D /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "../Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		F4C32A8B181CD8F70072958D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F4C32A8D181CD8FE0072958D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F4C32A8F181CDB630072958D /* NewDriversListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDriversListViewController.h; sourceTree = "<group>"; };
+		F4C32A90181CDB630072958D /* NewDriversListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NewDriversListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		F4C32A91181CDB630072958D /* NewDriversListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDriversListViewController.xib; sourceTree = "<group>"; };
+		F4F89503183312EE002CBD6B /* InsetAdjustedRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsetAdjustedRefreshControl.h; sourceTree = "<group>"; };
+		F4F89504183312EE002CBD6B /* InsetAdjustedRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsetAdjustedRefreshControl.m; sourceTree = "<group>"; };
+		F4FAFF31181D6D680024C026 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		F4FAFF32181D6D680024C026 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		F4FAFF34181D73890024C026 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F4FAFF36181D74850024C026 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		F4FAFF38181D748B0024C026 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4C32930181C57F10072958D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BB8C67183C4826001DFBC4 /* CoreLocation.framework in Frameworks */,
+				F408B58E1822039D00160136 /* iAd.framework in Frameworks */,
+				F4FAFF35181D73890024C026 /* Security.framework in Frameworks */,
+				F4C32A8E181CD8FE0072958D /* MobileCoreServices.framework in Frameworks */,
+				F4C32A8C181CD8F70072958D /* SystemConfiguration.framework in Frameworks */,
+				F4C3296A181C59B30072958D /* MessageUI.framework in Frameworks */,
+				F4C32939181C57F10072958D /* CoreGraphics.framework in Frameworks */,
+				F4C3293B181C57F10072958D /* UIKit.framework in Frameworks */,
+				F4C32937181C57F10072958D /* Foundation.framework in Frameworks */,
+				F4C32A8A181CD0EA0072958D /* libPods.a in Frameworks */,
+				F43031B1183B1CC400DB84B2 /* libPods-MBProgressHUD.a in Frameworks */,
+				F4C32A88181CD0E30072958D /* libDrivelineRestClient.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C3294B181C57F10072958D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C32950181C57F10072958D /* XCTest.framework in Frameworks */,
+				F4C32952181C57F10072958D /* UIKit.framework in Frameworks */,
+				F4C32951181C57F10072958D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4C3292A181C57F10072958D = {
+			isa = PBXGroup;
+			children = (
+				F4C3293C181C57F10072958D /* Driveline */,
+				F4C32955181C57F10072958D /* DrivelineTests */,
+				F4C32935181C57F10072958D /* Frameworks */,
+				F4C32934181C57F10072958D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4C32934181C57F10072958D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4C32933181C57F10072958D /* Driveline.app */,
+				F4C3294E181C57F10072958D /* DrivelineTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4C32935181C57F10072958D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4BB8C66183C4826001DFBC4 /* CoreLocation.framework */,
+				F43031B0183B1CC400DB84B2 /* libPods-MBProgressHUD.a */,
+				F4FAFF34181D73890024C026 /* Security.framework */,
+				F4C32A8D181CD8FE0072958D /* MobileCoreServices.framework */,
+				F4C32A8B181CD8F70072958D /* SystemConfiguration.framework */,
+				F4C32A89181CD0EA0072958D /* libPods.a */,
+				F4C32A87181CD0E30072958D /* libDrivelineRestClient.a */,
+				F4C32969181C59B30072958D /* MessageUI.framework */,
+				F4C32967181C59970072958D /* iAd.framework */,
+				F4C32936181C57F10072958D /* Foundation.framework */,
+				F4C32938181C57F10072958D /* CoreGraphics.framework */,
+				F4C3293A181C57F10072958D /* UIKit.framework */,
+				F4C3294F181C57F10072958D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4C3293C181C57F10072958D /* Driveline */ = {
+			isa = PBXGroup;
+			children = (
+				F4C32979181C5A2D0072958D /* View Controllers */,
+				F4C329AE181C5AC50072958D /* EditableDetailCell.h */,
+				F4C329AF181C5AC50072958D /* EditableDetailCell.m */,
+				F4C32945181C57F10072958D /* AppDelegate.h */,
+				F4C32946181C57F10072958D /* AppDelegate.m */,
+				F4C329B1181C5B1A0072958D /* PhoneNumberFormatter.h */,
+				F4C329B2181C5B1A0072958D /* PhoneNumberFormatter.m */,
+				F4FAFF38181D748B0024C026 /* KeychainItemWrapper.h */,
+				F4FAFF36181D74850024C026 /* KeychainItemWrapper.m */,
+				F4FAFF31181D6D680024C026 /* DataManager.h */,
+				F4FAFF32181D6D680024C026 /* DataManager.m */,
+				F4C32965181C58980072958D /* MainStoryboard.storyboard */,
+				F4C32948181C57F10072958D /* Images.xcassets */,
+				F4C3293D181C57F10072958D /* Supporting Files */,
+				F4BB8C63183C46B8001DFBC4 /* LocationManager.h */,
+				F4BB8C64183C46B8001DFBC4 /* LocationManager.m */,
+			);
+			path = Driveline;
+			sourceTree = "<group>";
+		};
+		F4C3293D181C57F10072958D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4C3293E181C57F10072958D /* Driveline-Info.plist */,
+				F4C3293F181C57F10072958D /* InfoPlist.strings */,
+				F4C32942181C57F10072958D /* main.m */,
+				F4C32944181C57F10072958D /* Driveline-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4C32955181C57F10072958D /* DrivelineTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4C3295B181C57F10072958D /* DrivelineTests.m */,
+				F4C32956181C57F10072958D /* Supporting Files */,
+			);
+			path = DrivelineTests;
+			sourceTree = "<group>";
+		};
+		F4C32956181C57F10072958D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4C32957181C57F10072958D /* DrivelineTests-Info.plist */,
+				F4C32958181C57F10072958D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4C32979181C5A2D0072958D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4C3298D181C5A8E0072958D /* My Groups */,
+				F4C3297A181C5A490072958D /* Drivers List */,
+				F4C3296B181C5A060072958D /* LoginViewController.h */,
+				F4C3296C181C5A060072958D /* LoginViewController.m */,
+				F4C3296D181C5A060072958D /* CreateAccountViewController.h */,
+				F4C3296E181C5A060072958D /* CreateAccountViewController.m */,
+				F4C3296F181C5A060072958D /* MainTabViewController.h */,
+				F4C32970181C5A060072958D /* MainTabViewController.m */,
+				F4C32971181C5A060072958D /* StartDrivingViewController.h */,
+				F4C32972181C5A060072958D /* StartDrivingViewController.m */,
+				F4C32973181C5A060072958D /* StartDrivingViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F4C3297A181C5A490072958D /* Drivers List */ = {
+			isa = PBXGroup;
+			children = (
+				F4BE4484183077BF00B6DA79 /* DriversListDetailViewController.h */,
+				F4BE4485183077BF00B6DA79 /* DriversListDetailViewController.m */,
+				F4BE4486183077BF00B6DA79 /* DriversListDetailViewController.xib */,
+				F4C32A8F181CDB630072958D /* NewDriversListViewController.h */,
+				F4C32A90181CDB630072958D /* NewDriversListViewController.m */,
+				F4C32A91181CDB630072958D /* NewDriversListViewController.xib */,
+				F4C32981181C5A5C0072958D /* DriversListCell.h */,
+				F4C32982181C5A5C0072958D /* DriversListCell.m */,
+				F4C32983181C5A5C0072958D /* ProfileHeaderCell.h */,
+				F4C32984181C5A5C0072958D /* ProfileHeaderCell.m */,
+				F4C32985181C5A5C0072958D /* ProfileHeaderCell.xib */,
+				F4F89503183312EE002CBD6B /* InsetAdjustedRefreshControl.h */,
+				F4F89504183312EE002CBD6B /* InsetAdjustedRefreshControl.m */,
+			);
+			name = "Drivers List";
+			sourceTree = "<group>";
+		};
+		F4C3298D181C5A8E0072958D /* My Groups */ = {
+			isa = PBXGroup;
+			children = (
+				F4C3298E181C5A9B0072958D /* MyGroupsViewController.h */,
+				F4C3298F181C5A9B0072958D /* MyGroupsViewController.m */,
+				F4C32990181C5A9B0072958D /* MyGroupsViewController.xib */,
+				F4C32991181C5A9B0072958D /* MyGroupsDetailViewController.h */,
+				F4C32992181C5A9B0072958D /* MyGroupsDetailViewController.m */,
+				F4C32993181C5A9B0072958D /* MyGroupsDetailViewController.xib */,
+				F4BD37A2182C8ABA0084AFC8 /* CreateGroupViewController.h */,
+				F4BD37A3182C8ABA0084AFC8 /* CreateGroupViewController.m */,
+				F4BD37A7182C92270084AFC8 /* CreateGroupAccount.storyboard */,
+			);
+			name = "My Groups";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4C32932181C57F10072958D /* Driveline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C3295F181C57F10072958D /* Build configuration list for PBXNativeTarget "Driveline" */;
+			buildPhases = (
+				F4C3292F181C57F10072958D /* Sources */,
+				F4C32930181C57F10072958D /* Frameworks */,
+				F4C32931181C57F10072958D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Driveline;
+			productName = Driveline;
+			productReference = F4C32933181C57F10072958D /* Driveline.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4C3294D181C57F10072958D /* DrivelineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C32962181C57F10072958D /* Build configuration list for PBXNativeTarget "DrivelineTests" */;
+			buildPhases = (
+				F4C3294A181C57F10072958D /* Sources */,
+				F4C3294B181C57F10072958D /* Frameworks */,
+				F4C3294C181C57F10072958D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4C32954181C57F10072958D /* PBXTargetDependency */,
+			);
+			name = DrivelineTests;
+			productName = DrivelineTests;
+			productReference = F4C3294E181C57F10072958D /* DrivelineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4C3292B181C57F10072958D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Simon P Kaluza";
+				TargetAttributes = {
+					F4C32932181C57F10072958D = {
+						DevelopmentTeam = 2J4MHHTHHJ;
+					};
+					F4C3294D181C57F10072958D = {
+						TestTargetID = F4C32932181C57F10072958D;
+					};
+				};
+			};
+			buildConfigurationList = F4C3292E181C57F10072958D /* Build configuration list for PBXProject "Driveline" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F4C3292A181C57F10072958D;
+			productRefGroup = F4C32934181C57F10072958D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4C32932181C57F10072958D /* Driveline */,
+				F4C3294D181C57F10072958D /* DrivelineTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4C32931181C57F10072958D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C32997181C5A9B0072958D /* MyGroupsViewController.xib in Resources */,
+				F4BE4488183077BF00B6DA79 /* DriversListDetailViewController.xib in Resources */,
+				F4C32966181C58980072958D /* MainStoryboard.storyboard in Resources */,
+				F4BD37A8182C92270084AFC8 /* CreateGroupAccount.storyboard in Resources */,
+				F4C32A93181CDB630072958D /* NewDriversListViewController.xib in Resources */,
+				F4C3298C181C5A5C0072958D /* ProfileHeaderCell.xib in Resources */,
+				F4C32941181C57F10072958D /* InfoPlist.strings in Resources */,
+				F4C32949181C57F10072958D /* Images.xcassets in Resources */,
+				F4C32978181C5A060072958D /* StartDrivingViewController.xib in Resources */,
+				F4C32999181C5A9B0072958D /* MyGroupsDetailViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C3294C181C57F10072958D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C3295A181C57F10072958D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4C3292F181C57F10072958D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C3298B181C5A5C0072958D /* ProfileHeaderCell.m in Sources */,
+				F4FAFF33181D6D680024C026 /* DataManager.m in Sources */,
+				F4C32975181C5A060072958D /* CreateAccountViewController.m in Sources */,
+				F4C32996181C5A9B0072958D /* MyGroupsViewController.m in Sources */,
+				F4C32998181C5A9B0072958D /* MyGroupsDetailViewController.m in Sources */,
+				F4C3298A181C5A5C0072958D /* DriversListCell.m in Sources */,
+				F4C329B5181C5B1A0072958D /* PhoneNumberFormatter.m in Sources */,
+				F4FAFF37181D74850024C026 /* KeychainItemWrapper.m in Sources */,
+				F4C32A92181CDB630072958D /* NewDriversListViewController.m in Sources */,
+				F4C32976181C5A060072958D /* MainTabViewController.m in Sources */,
+				F4BE4487183077BF00B6DA79 /* DriversListDetailViewController.m in Sources */,
+				F4F89505183312EE002CBD6B /* InsetAdjustedRefreshControl.m in Sources */,
+				F4BB8C65183C46B8001DFBC4 /* LocationManager.m in Sources */,
+				F4C329B0181C5AC50072958D /* EditableDetailCell.m in Sources */,
+				F4C32947181C57F10072958D /* AppDelegate.m in Sources */,
+				F4C32943181C57F10072958D /* main.m in Sources */,
+				F4C32974181C5A060072958D /* LoginViewController.m in Sources */,
+				F4C32977181C5A060072958D /* StartDrivingViewController.m in Sources */,
+				F4BD37A5182C8ABA0084AFC8 /* CreateGroupViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C3294A181C57F10072958D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C3295C181C57F10072958D /* DrivelineTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4C32954181C57F10072958D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4C32932181C57F10072958D /* Driveline */;
+			targetProxy = F4C32953181C57F10072958D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F4C3293F181C57F10072958D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C32940181C57F10072958D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F4C32958181C57F10072958D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C32959181C57F10072958D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4C3295D181C57F10072958D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F4C3295E181C57F10072958D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4C32960181C57F10072958D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Driveline/Driveline-Prefix.pch";
+				INFOPLIST_FILE = "Driveline/Driveline-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/driveline-ios-abqulepcsyhwbsehoctzcmcntnmp/Build/Products/Debug-iphoneos",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "../DrivelineRestClient/DrivelineRestClient \"../Pods/Headers/MBProgressHUD";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F4C32961181C57F10072958D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Driveline/Driveline-Prefix.pch";
+				INFOPLIST_FILE = "Driveline/Driveline-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/driveline-ios-abqulepcsyhwbsehoctzcmcntnmp/Build/Products/Debug-iphoneos",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "../DrivelineRestClient/DrivelineRestClient \"../Pods/Headers/MBProgressHUD";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F4C32963181C57F10072958D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Driveline.app/Driveline";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Driveline/Driveline-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DrivelineTests/DrivelineTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F4C32964181C57F10072958D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Driveline.app/Driveline";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Driveline/Driveline-Prefix.pch";
+				INFOPLIST_FILE = "DrivelineTests/DrivelineTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4C3292E181C57F10072958D /* Build configuration list for PBXProject "Driveline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C3295D181C57F10072958D /* Debug */,
+				F4C3295E181C57F10072958D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4C3295F181C57F10072958D /* Build configuration list for PBXNativeTarget "Driveline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C32960181C57F10072958D /* Debug */,
+				F4C32961181C57F10072958D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4C32962181C57F10072958D /* Build configuration list for PBXNativeTarget "DrivelineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C32963181C57F10072958D /* Debug */,
+				F4C32964181C57F10072958D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4C3292B181C57F10072958D /* Project object */;
+}
