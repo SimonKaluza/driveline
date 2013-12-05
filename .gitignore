@@ -3,3 +3,7 @@ driveline-server-jaxrs/.idea
 driveline-server-jaxrs/driveline-jaxws.iml
 driveline-server-jaxrs/replace-mypass.sh
 driveline-server-jaxrs/replace-gitpass.sh
+driveline-client-ios/driveline-ios.xcworkspace/xcshareddata/
+driveline-server-jaxrs/src/main/webapp/WEB-INF/web.xml
+driveline-server-jaxrs/src/main/webapp/index.html
+driveline-server-jaxrs/target/
