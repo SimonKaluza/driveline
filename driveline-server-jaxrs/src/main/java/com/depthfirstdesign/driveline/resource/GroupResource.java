@@ -138,11 +138,32 @@ public class GroupResource {
             @PathParam("groupId") long groupId,
             @ApiParam(value = "Email of address of the User requesting membership", required = true)
             @PathParam("newMemberEmail") String newMemberEmail,
-            @ApiParam(value = "User privileges (0 for regular user, 1 for admin)", required = true)
+            @ApiParam(value = "User privileges (-1 for unverified user, 0 for regular user, 1 for admin)", required = true)
             @PathParam("adminStatus") int adminStatus)
             throws ApiException {
         Authorizer.authorize(email, password);
         groupData.addUserToGroup(groupId, newMemberEmail, adminStatus);
+        return Response.ok().entity("").build();
+    }
+
+    @PUT
+    @Path("/acceptUserToGroup")
+    @ApiOperation(value = "Accept User to Group",
+            notes = "Modify a particular User's admin status such that they have driving/riding permissions for a group")
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Invalid User supplied"),
+            @ApiResponse(code = 404, message = "User not found")})
+    public Response acceptUserToGroup(
+            @ApiParam(value = "Requesting User's email address for authorization purposes (original)")
+            @HeaderParam("email") String email,
+            @ApiParam(value = "Requesting User's password for authorization purposes (original)")
+            @HeaderParam("password") String password,
+            @ApiParam(value = "Updated user object", required = true)
+            @QueryParam(value="acceptedUserEmail") String acceptedUserEmail,
+            @ApiParam(value = "Updated user object", required = true)
+            @QueryParam(value="acceptingGroupId")long acceptingGroupId) throws ApiException {
+        Authorizer.authorize(email, password);
+        groupData.acceptUserToGroup(acceptedUserEmail, acceptingGroupId);
         return Response.ok().entity("").build();
     }
 

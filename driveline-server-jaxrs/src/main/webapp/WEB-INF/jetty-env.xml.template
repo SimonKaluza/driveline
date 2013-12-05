@@ -8,8 +8,8 @@
             <New class="org.apache.commons.dbcp.BasicDataSource">
                 <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
                 <Set name="url">jdbc:mysql://localhost/driveline</Set>
-                <Set name="username">a2sl1zz</Set>
-                <Set name="password">Wdkymys15</Set>
+                <Set name="username">$USERNAME$</Set>
+                <Set name="password">$PASSWORD$</Set>
                 <Set name="validationQuery">select 1</Set>
                 <Set name="testOnBorrow">true</Set>
             </New>

@@ -15,6 +15,15 @@ public class Group {
   private String name;
   private String adminEmail;
   private String description;
+  private int usersAdminStatus;
+
+    public int getUsersAdminStatus() {
+        return usersAdminStatus;
+    }
+
+    public void setUsersAdminStatus(int usersAdminStatus) {
+        this.usersAdminStatus = usersAdminStatus;
+    }
 
     public String getAddress() {
         return address;

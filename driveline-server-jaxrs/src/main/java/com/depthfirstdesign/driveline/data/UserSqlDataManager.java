@@ -28,7 +28,8 @@ public class UserSqlDataManager extends SqlDataManager {
             stmt.setString(1, email);
             ResultSet rst = stmt.executeQuery();
             if (rst.first()){
-                 User u = createUserFromResultSet(rst);
+                 User u = new User(rst.getString("email"), rst.getString("firstname"), rst.getString("lastname"),
+                        rst.getString("password"), rst.getString("phone"), rst.getInt("seats"), rst.getFloat("lastLatitude"), rst.getFloat("lastLongitude"));
                  rst.close();
                  PreparedStatement stmt2 = conn.prepareStatement("select * from `user_group` where email=?");
                  stmt2.setString(1, email);
@@ -89,8 +90,8 @@ public class UserSqlDataManager extends SqlDataManager {
         try{
             conn = getFreeConnection();
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO `driveline`.`user` "
-                    + "(`email`, `firstname`, `lastname`, `phone`, `password`, `deleted`, `seats`, `userstatus`)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+                    + "(`email`, `firstname`, `lastname`, `phone`, `password`, `deleted`, `seats`)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?);");
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getFirstName());
             stmt.setString(3, user.getLastName());
@@ -98,7 +99,6 @@ public class UserSqlDataManager extends SqlDataManager {
             stmt.setString(5, user.getPassword());
             stmt.setInt(6, 0);
             stmt.setInt(7, user.getSeats());
-            stmt.setInt(8, user.getUserStatus());
             int rc = stmt.executeUpdate();
             if (rc != 1){
                 throw new ApiException(500, "A non-cardinal number returned from User insert statement.  RC was " + rc);
@@ -194,15 +194,17 @@ public class UserSqlDataManager extends SqlDataManager {
         try{
             conn = getFreeConnection();
             PreparedStatement stmt = conn.prepareStatement("select `group`.groupId, description, deleted, address, " +
-                    "admin_email, `name` from `group` inner join user_group on `group`.groupId=`user_group`.groupId " +
+                    "admin_email, `name`, `admin` from `group` inner join user_group on `group`.groupId=`user_group`.groupId " +
                     "where `user_group`.email=? and deleted=0");
             stmt.setString(1, requestedEmail);
             ResultSet rst = stmt.executeQuery();
             List<Group> groups = new ArrayList<Group>();
             while(rst.next()){
-                groups.add(new Group(rst.getLong("groupId"), rst.getString("name"),
+                Group g = new Group(rst.getLong("groupId"), rst.getString("name"),
                         rst.getString("admin_email"), rst.getString("description"), rst.getInt("deleted"),
-                        rst.getString("address")));
+                        rst.getString("address"));
+                g.setUsersAdminStatus(rst.getInt("admin"));
+                groups.add(g);
             }
             rst.close();
             return groups;
@@ -228,12 +230,6 @@ public class UserSqlDataManager extends SqlDataManager {
 
     private UserSqlDataManager() {
         super();
-    }
-
-    private static User createUserFromResultSet(ResultSet resultSet) throws SQLException{
-        return new User(resultSet.getString("email"), resultSet.getString("firstname"), resultSet.getString("lastname"),
-                resultSet.getString("password"), resultSet.getString("phone"),
-                resultSet.getInt("userstatus"), resultSet.getInt("seats"), resultSet.getFloat("lastLatitude"), resultSet.getFloat("lastLongitude"));
     }
 
     public void updateUsersStatus(String email, List<UserStatus> statuses) throws ApiException {

@@ -122,14 +122,12 @@ public class User{
         this.admin = admin;
     }
 
-    public User (String email, String firstName, String lastName, String password, String phone,
-                 int userStatus, int seats, float lastLatitude, float lastLongitude) {
+    public User (String email, String firstName, String lastName, String password, String phone, int seats, float lastLatitude, float lastLongitude) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setEmail(email);
         this.setPassword(password);
         this.setPhone(phone);
-        this.setUserStatus(userStatus);
         this.setSeats(seats);
         this.setLastLatitude(lastLatitude);
         this.setLastLongitude(lastLongitude);

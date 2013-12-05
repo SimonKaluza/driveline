@@ -175,8 +175,8 @@ public class GroupSqlDataManager extends SqlDataManager {
             List<User> users = new ArrayList<User>();
             while(rst.next()) {
                 User u = new User(rst.getString("email"), rst.getString("firstname"), rst.getString("lastname"),
-                        rst.getString("password"), rst.getString("phone"),
-                        rst.getInt("status"), rst.getInt("seats"), rst.getFloat("lastLatitude"), rst.getFloat("lastLongitude"));
+                        rst.getString("password"), rst.getString("phone"), rst.getInt("seats"), rst.getFloat("lastLatitude"),
+                        rst.getFloat("lastLongitude"));
                 u.setAdmin(rst.getInt("admin"));
                 u.setUserStatus(rst.getInt("status"));
                 users.add(u);
@@ -315,6 +315,32 @@ public class GroupSqlDataManager extends SqlDataManager {
         } finally {
             try {
                 if (conn != null) conn.close();
+            } catch (SQLException e) {
+                Logger.getAnonymousLogger().log(Level.SEVERE, ExceptionUtils.getFullStackTrace(e));
+                throw new ApiException(500, ExceptionUtils.getFullStackTrace(e));
+            }
+        }
+    }
+
+    public void acceptUserToGroup(String acceptedUserEmail, long acceptingGroupId) throws ApiException {
+        Connection conn = null;
+        try{
+            conn = getFreeConnection();
+            PreparedStatement stmt = conn.prepareStatement("UPDATE `user_group` SET `admin`=0 WHERE `email`=? and `groupId`=?;");
+            stmt.setString(1, acceptedUserEmail);
+            stmt.setLong(2, acceptingGroupId);
+            int rc = stmt.executeUpdate();
+            if (rc < 1) throw new ApiException(404, "User not in group with id = " + acceptingGroupId);
+        }
+        catch (SQLException e){
+            Logger.getAnonymousLogger().log(Level.SEVERE, ExceptionUtils.getFullStackTrace(e));
+            throw new ApiException(500, ExceptionUtils.getFullStackTrace(e));
+        }
+        finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
             } catch (SQLException e) {
                 Logger.getAnonymousLogger().log(Level.SEVERE, ExceptionUtils.getFullStackTrace(e));
                 throw new ApiException(500, ExceptionUtils.getFullStackTrace(e));
