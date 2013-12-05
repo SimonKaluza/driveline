@@ -7,7 +7,7 @@
 
 
 @implementation SWGGroupApi
-static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
+static NSString * basePath = @"http://localhost:8080/api";
 
 +(SWGGroupApi*) apiWithHeader:(NSString*)headerValue key:(NSString*)key {
     static SWGGroupApi* singletonAPI = nil;
@@ -50,53 +50,6 @@ static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
     return [SWGApiClient requestQueueSize];
 }
 
-
--(NSNumber*) getGroupByIdWithCompletionBlock:(NSString*) email
-        password:(NSString*) password
-        groupId:(NSNumber*) groupId
-        completionHandler: (void (^)(SWGGroup* output, NSError* error))completionBlock{
-
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/group/get/{groupId}", basePath];
-
-    // remove format in URL if needed
-    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
-        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
-
-    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"groupId", @"}"]] withString: [SWGApiClient escape:groupId]];
-    NSString* requestContentType = @"application/json";
-    NSString* responseContentType = @"application/json";
-
-        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
-    if(email != nil)
-        headerParams[@"email"] = email;
-    if(password != nil)
-        headerParams[@"password"] = password;
-    id bodyDictionary = nil;
-        if(groupId == nil) {
-        // error
-    }
-    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
-
-    return [client dictionary:requestUrl 
-                              method:@"GET" 
-                         queryParams:queryParams 
-                                body:bodyDictionary 
-                        headerParams:headerParams
-                  requestContentType:requestContentType
-                 responseContentType:responseContentType
-                     completionBlock:^(NSDictionary *data, NSError *error) {
-                        if (error) {
-                            completionBlock(nil, error);return;
-                        }
-                        SWGGroup *result = nil;
-                        if (data) {
-                            result = [[SWGGroup alloc]initWithValues: data];
-                        }
-                        completionBlock(result , nil);}];
-    
-
-}
 
 -(NSNumber*) findGroupsByKeywordWithCompletionBlock:(NSString*) email
         password:(NSString*) password
@@ -283,6 +236,53 @@ static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
 
 }
 
+-(NSNumber*) getGroupByIdWithCompletionBlock:(NSString*) email
+        password:(NSString*) password
+        groupId:(NSNumber*) groupId
+        completionHandler: (void (^)(SWGGroup* output, NSError* error))completionBlock{
+
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/group/get/{groupId}", basePath];
+
+    // remove format in URL if needed
+    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
+        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
+
+    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"groupId", @"}"]] withString: [SWGApiClient escape:groupId]];
+    NSString* requestContentType = @"application/json";
+    NSString* responseContentType = @"application/json";
+
+        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
+    if(email != nil)
+        headerParams[@"email"] = email;
+    if(password != nil)
+        headerParams[@"password"] = password;
+    id bodyDictionary = nil;
+        if(groupId == nil) {
+        // error
+    }
+    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
+
+    return [client dictionary:requestUrl 
+                              method:@"GET" 
+                         queryParams:queryParams 
+                                body:bodyDictionary 
+                        headerParams:headerParams
+                  requestContentType:requestContentType
+                 responseContentType:responseContentType
+                     completionBlock:^(NSDictionary *data, NSError *error) {
+                        if (error) {
+                            completionBlock(nil, error);return;
+                        }
+                        SWGGroup *result = nil;
+                        if (data) {
+                            result = [[SWGGroup alloc]initWithValues: data];
+                        }
+                        completionBlock(result , nil);}];
+    
+
+}
+
 -(NSNumber*) createGroupAsAdminWithCompletionBlock:(NSString*) email
         password:(NSString*) password
         body:(SWGGroup*) body
@@ -401,6 +401,58 @@ static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
 
     return [client stringWithCompletionBlock:requestUrl 
                                              method:@"POST" 
+                                        queryParams:queryParams 
+                                               body:bodyDictionary 
+                                       headerParams:headerParams
+                                 requestContentType: requestContentType
+                                responseContentType: responseContentType
+                                    completionBlock:^(NSString *data, NSError *error) {
+                        if (error) {
+                            completionBlock(error);
+                            return;
+                        }
+                        completionBlock(nil);
+                    }];
+    
+
+}
+
+-(NSNumber*) acceptUserToGroupWithCompletionBlock:(NSString*) email
+        password:(NSString*) password
+        acceptedUserEmail:(NSString*) acceptedUserEmail
+        acceptingGroupId:(NSNumber*) acceptingGroupId
+        completionHandler: (void (^)(NSError* error))completionBlock{
+
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/group/acceptUserToGroup", basePath];
+
+    // remove format in URL if needed
+    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
+        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
+
+    NSString* requestContentType = @"application/json";
+    NSString* responseContentType = @"application/json";
+
+        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if(acceptedUserEmail != nil)
+        queryParams[@"acceptedUserEmail"] = acceptedUserEmail;
+    if(acceptingGroupId != nil)
+        queryParams[@"acceptingGroupId"] = acceptingGroupId;
+    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
+    if(email != nil)
+        headerParams[@"email"] = email;
+    if(password != nil)
+        headerParams[@"password"] = password;
+    id bodyDictionary = nil;
+        if(acceptedUserEmail == nil) {
+        // error
+    }
+    if(acceptingGroupId == nil) {
+        // error
+    }
+    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
+
+    return [client stringWithCompletionBlock:requestUrl 
+                                             method:@"PUT" 
                                         queryParams:queryParams 
                                                body:bodyDictionary 
                                        headerParams:headerParams

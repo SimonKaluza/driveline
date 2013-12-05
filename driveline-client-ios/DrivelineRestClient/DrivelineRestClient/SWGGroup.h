@@ -15,12 +15,15 @@
 
 @property(nonatomic) NSNumber* deleted;  
 
+@property(nonatomic) NSNumber* usersAdminStatus;  
+
 - (id) address: (NSString*) address
      name: (NSString*) name
      _id: (NSNumber*) _id
      description: (NSString*) description
      adminEmail: (NSString*) adminEmail
-     deleted: (NSNumber*) deleted;
+     deleted: (NSNumber*) deleted
+     usersAdminStatus: (NSNumber*) usersAdminStatus;
 
 - (id) initWithValues: (NSDictionary*)dict;
 - (NSDictionary*) asDictionary;

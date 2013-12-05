@@ -120,7 +120,7 @@
         }
         else {
             __weak MyGroupsDetailViewController* weakSelf = self;
-            [ groupApi addUserToGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id _newMemberEmail:[DataManager sharedSingleton].currentUser.email adminStatus:@0 completionHandler:^(NSError *error) {
+            [ groupApi addUserToGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id _newMemberEmail:[DataManager sharedSingleton].currentUser.email adminStatus:@-1 completionHandler:^(NSError *error) {
                 if (error){
                     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Failed to join group" message: @"Could not join the selected group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];

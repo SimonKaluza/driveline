@@ -9,6 +9,7 @@
     description: (NSString*) description
     adminEmail: (NSString*) adminEmail
     deleted: (NSNumber*) deleted
+    usersAdminStatus: (NSNumber*) usersAdminStatus
 {
   _address = address;
   _name = name;
@@ -16,6 +17,7 @@
   _description = description;
   _adminEmail = adminEmail;
   _deleted = deleted;
+  _usersAdminStatus = usersAdminStatus;
   return self;
 }
 
@@ -29,6 +31,7 @@
         _description = dict[@"description"]; 
         _adminEmail = dict[@"adminEmail"]; 
         _deleted = dict[@"deleted"]; 
+        _usersAdminStatus = dict[@"usersAdminStatus"]; 
         
 
     }
@@ -43,6 +46,7 @@
         if(_description != nil) dict[@"description"] = _description ;
         if(_adminEmail != nil) dict[@"adminEmail"] = _adminEmail ;
         if(_deleted != nil) dict[@"deleted"] = _deleted ;
+        if(_usersAdminStatus != nil) dict[@"usersAdminStatus"] = _usersAdminStatus ;
         NSDictionary* output = [dict copy];
     return output;
 }

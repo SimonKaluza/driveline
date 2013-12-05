@@ -568,7 +568,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "../DrivelineRestClient/DrivelineRestClient \"../Pods/Headers/MBProgressHUD";
+				USER_HEADER_SEARCH_PATHS = "../DrivelineRestClient/DrivelineRestClient \"../Pods/MBProgressHUD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -590,7 +590,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "../DrivelineRestClient/DrivelineRestClient \"../Pods/Headers/MBProgressHUD";
+				USER_HEADER_SEARCH_PATHS = "../DrivelineRestClient/DrivelineRestClient \"../Pods/MBProgressHUD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

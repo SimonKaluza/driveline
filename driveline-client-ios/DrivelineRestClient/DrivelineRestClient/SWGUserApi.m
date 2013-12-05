@@ -8,7 +8,7 @@
 
 
 @implementation SWGUserApi
-static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
+static NSString * basePath = @"http://localhost:8080/api";
 
 +(SWGUserApi*) apiWithHeader:(NSString*)headerValue key:(NSString*)key {
     static SWGUserApi* singletonAPI = nil;
@@ -51,58 +51,6 @@ static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
     return [SWGApiClient requestQueueSize];
 }
 
-
--(NSNumber*) getUserStatusesWithCompletionBlock:(NSString*) email
-        password:(NSString*) password
-        requestedUserEmail:(NSString*) requestedUserEmail
-        completionHandler: (void (^)(NSArray* output, NSError* error))completionBlock{
-
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/getStatuses/{requestedUserEmail}", basePath];
-
-    // remove format in URL if needed
-    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
-        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
-
-    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"requestedUserEmail", @"}"]] withString: [SWGApiClient escape:requestedUserEmail]];
-    NSString* requestContentType = @"application/json";
-    NSString* responseContentType = @"application/json";
-
-        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
-    if(email != nil)
-        headerParams[@"email"] = email;
-    if(password != nil)
-        headerParams[@"password"] = password;
-    id bodyDictionary = nil;
-        if(requestedUserEmail == nil) {
-        // error
-    }
-    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
-
-    return [client dictionary: requestUrl 
-                               method: @"GET" 
-                          queryParams: queryParams 
-                                 body: bodyDictionary 
-                         headerParams: headerParams
-                   requestContentType: requestContentType
-                  responseContentType: responseContentType
-                      completionBlock: ^(NSDictionary *data, NSError *error) {
-                         if (error) {
-                             completionBlock(nil, error);return;
-                         }
-                         
-                         if([data isKindOfClass:[NSArray class]]){
-                             NSMutableArray * objs = [[NSMutableArray alloc] initWithCapacity:[data count]];
-                             for (NSDictionary* dict in (NSArray*)data) {
-                                SWGUserStatus* d = [[SWGUserStatus alloc]initWithValues: dict];
-                                [objs addObject:d];
-                             }
-                             completionBlock(objs, nil);
-                         }
-                        }];
-    
-
-}
 
 -(NSNumber*) getUsersGroupsWithCompletionBlock:(NSString*) email
         password:(NSString*) password
@@ -224,6 +172,195 @@ static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
                         }
                         completionBlock(nil);
                     }];
+    
+
+}
+
+-(NSNumber*) stopDrivingWithCompletionBlock:(NSString*) email
+        password:(NSString*) password
+        userEmail:(NSString*) userEmail
+        completionHandler: (void (^)(NSError* error))completionBlock{
+
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/stop-driving/{userEmail}", basePath];
+
+    // remove format in URL if needed
+    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
+        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
+
+    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"userEmail", @"}"]] withString: [SWGApiClient escape:userEmail]];
+    NSString* requestContentType = @"application/json";
+    NSString* responseContentType = @"application/json";
+
+        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
+    if(email != nil)
+        headerParams[@"email"] = email;
+    if(password != nil)
+        headerParams[@"password"] = password;
+    id bodyDictionary = nil;
+        if(userEmail == nil) {
+        // error
+    }
+    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
+
+    return [client stringWithCompletionBlock:requestUrl 
+                                             method:@"PUT" 
+                                        queryParams:queryParams 
+                                               body:bodyDictionary 
+                                       headerParams:headerParams
+                                 requestContentType: requestContentType
+                                responseContentType: responseContentType
+                                    completionBlock:^(NSString *data, NSError *error) {
+                        if (error) {
+                            completionBlock(error);
+                            return;
+                        }
+                        completionBlock(nil);
+                    }];
+    
+
+}
+
+-(NSNumber*) deleteUserWithCompletionBlock:(NSString*) email
+        password:(NSString*) password
+        emailForDeletion:(NSString*) emailForDeletion
+        completionHandler: (void (^)(NSError* error))completionBlock{
+
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/delete/{emailForDeletion}", basePath];
+
+    // remove format in URL if needed
+    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
+        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
+
+    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"emailForDeletion", @"}"]] withString: [SWGApiClient escape:emailForDeletion]];
+    NSString* requestContentType = @"application/json";
+    NSString* responseContentType = @"application/json";
+
+        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
+    if(email != nil)
+        headerParams[@"email"] = email;
+    if(password != nil)
+        headerParams[@"password"] = password;
+    id bodyDictionary = nil;
+        if(emailForDeletion == nil) {
+        // error
+    }
+    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
+
+    return [client stringWithCompletionBlock:requestUrl 
+                                             method:@"DELETE" 
+                                        queryParams:queryParams 
+                                               body:bodyDictionary 
+                                       headerParams:headerParams
+                                 requestContentType: requestContentType
+                                responseContentType: responseContentType
+                                    completionBlock:^(NSString *data, NSError *error) {
+                        if (error) {
+                            completionBlock(error);
+                            return;
+                        }
+                        completionBlock(nil);
+                    }];
+    
+
+}
+
+-(NSNumber*) getUserWithCompletionBlock:(NSString*) email
+        password:(NSString*) password
+        requestedUserEmail:(NSString*) requestedUserEmail
+        completionHandler: (void (^)(SWGUser* output, NSError* error))completionBlock{
+
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/get/{requestedUserEmail}", basePath];
+
+    // remove format in URL if needed
+    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
+        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
+
+    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"requestedUserEmail", @"}"]] withString: [SWGApiClient escape:requestedUserEmail]];
+    NSString* requestContentType = @"application/json";
+    NSString* responseContentType = @"application/json";
+
+        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
+    if(email != nil)
+        headerParams[@"email"] = email;
+    if(password != nil)
+        headerParams[@"password"] = password;
+    id bodyDictionary = nil;
+        if(requestedUserEmail == nil) {
+        // error
+    }
+    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
+
+    return [client dictionary:requestUrl 
+                              method:@"GET" 
+                         queryParams:queryParams 
+                                body:bodyDictionary 
+                        headerParams:headerParams
+                  requestContentType:requestContentType
+                 responseContentType:responseContentType
+                     completionBlock:^(NSDictionary *data, NSError *error) {
+                        if (error) {
+                            completionBlock(nil, error);return;
+                        }
+                        SWGUser *result = nil;
+                        if (data) {
+                            result = [[SWGUser alloc]initWithValues: data];
+                        }
+                        completionBlock(result , nil);}];
+    
+
+}
+
+-(NSNumber*) getUserStatusesWithCompletionBlock:(NSString*) email
+        password:(NSString*) password
+        requestedUserEmail:(NSString*) requestedUserEmail
+        completionHandler: (void (^)(NSArray* output, NSError* error))completionBlock{
+
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/getStatuses/{requestedUserEmail}", basePath];
+
+    // remove format in URL if needed
+    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
+        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
+
+    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"requestedUserEmail", @"}"]] withString: [SWGApiClient escape:requestedUserEmail]];
+    NSString* requestContentType = @"application/json";
+    NSString* responseContentType = @"application/json";
+
+        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
+    if(email != nil)
+        headerParams[@"email"] = email;
+    if(password != nil)
+        headerParams[@"password"] = password;
+    id bodyDictionary = nil;
+        if(requestedUserEmail == nil) {
+        // error
+    }
+    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
+
+    return [client dictionary: requestUrl 
+                               method: @"GET" 
+                          queryParams: queryParams 
+                                 body: bodyDictionary 
+                         headerParams: headerParams
+                   requestContentType: requestContentType
+                  responseContentType: responseContentType
+                      completionBlock: ^(NSDictionary *data, NSError *error) {
+                         if (error) {
+                             completionBlock(nil, error);return;
+                         }
+                         
+                         if([data isKindOfClass:[NSArray class]]){
+                             NSMutableArray * objs = [[NSMutableArray alloc] initWithCapacity:[data count]];
+                             for (NSDictionary* dict in (NSArray*)data) {
+                                SWGUserStatus* d = [[SWGUserStatus alloc]initWithValues: dict];
+                                [objs addObject:d];
+                             }
+                             completionBlock(objs, nil);
+                         }
+                        }];
     
 
 }
@@ -460,143 +597,6 @@ static NSString * basePath = @"http://driveline.cloudapp.net:80/api";
                         }
                         completionBlock(nil);
                     }];
-    
-
-}
-
--(NSNumber*) stopDrivingWithCompletionBlock:(NSString*) email
-        password:(NSString*) password
-        userEmail:(NSString*) userEmail
-        completionHandler: (void (^)(NSError* error))completionBlock{
-
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/stop-driving/{userEmail}", basePath];
-
-    // remove format in URL if needed
-    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
-        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
-
-    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"userEmail", @"}"]] withString: [SWGApiClient escape:userEmail]];
-    NSString* requestContentType = @"application/json";
-    NSString* responseContentType = @"application/json";
-
-        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
-    if(email != nil)
-        headerParams[@"email"] = email;
-    if(password != nil)
-        headerParams[@"password"] = password;
-    id bodyDictionary = nil;
-        if(userEmail == nil) {
-        // error
-    }
-    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
-
-    return [client stringWithCompletionBlock:requestUrl 
-                                             method:@"PUT" 
-                                        queryParams:queryParams 
-                                               body:bodyDictionary 
-                                       headerParams:headerParams
-                                 requestContentType: requestContentType
-                                responseContentType: responseContentType
-                                    completionBlock:^(NSString *data, NSError *error) {
-                        if (error) {
-                            completionBlock(error);
-                            return;
-                        }
-                        completionBlock(nil);
-                    }];
-    
-
-}
-
--(NSNumber*) deleteUserWithCompletionBlock:(NSString*) email
-        password:(NSString*) password
-        emailForDeletion:(NSString*) emailForDeletion
-        completionHandler: (void (^)(NSError* error))completionBlock{
-
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/delete/{emailForDeletion}", basePath];
-
-    // remove format in URL if needed
-    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
-        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
-
-    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"emailForDeletion", @"}"]] withString: [SWGApiClient escape:emailForDeletion]];
-    NSString* requestContentType = @"application/json";
-    NSString* responseContentType = @"application/json";
-
-        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
-    if(email != nil)
-        headerParams[@"email"] = email;
-    if(password != nil)
-        headerParams[@"password"] = password;
-    id bodyDictionary = nil;
-        if(emailForDeletion == nil) {
-        // error
-    }
-    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
-
-    return [client stringWithCompletionBlock:requestUrl 
-                                             method:@"DELETE" 
-                                        queryParams:queryParams 
-                                               body:bodyDictionary 
-                                       headerParams:headerParams
-                                 requestContentType: requestContentType
-                                responseContentType: responseContentType
-                                    completionBlock:^(NSString *data, NSError *error) {
-                        if (error) {
-                            completionBlock(error);
-                            return;
-                        }
-                        completionBlock(nil);
-                    }];
-    
-
-}
-
--(NSNumber*) getUserWithCompletionBlock:(NSString*) email
-        password:(NSString*) password
-        requestedUserEmail:(NSString*) requestedUserEmail
-        completionHandler: (void (^)(SWGUser* output, NSError* error))completionBlock{
-
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/user/get/{requestedUserEmail}", basePath];
-
-    // remove format in URL if needed
-    if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
-        [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:@".{format}"] withString:@".json"];
-
-    [requestUrl replaceCharactersInRange: [requestUrl rangeOfString:[NSString stringWithFormat:@"%@%@%@", @"{", @"requestedUserEmail", @"}"]] withString: [SWGApiClient escape:requestedUserEmail]];
-    NSString* requestContentType = @"application/json";
-    NSString* responseContentType = @"application/json";
-
-        NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [[NSMutableDictionary alloc] init];
-    if(email != nil)
-        headerParams[@"email"] = email;
-    if(password != nil)
-        headerParams[@"password"] = password;
-    id bodyDictionary = nil;
-        if(requestedUserEmail == nil) {
-        // error
-    }
-    SWGApiClient* client = [SWGApiClient sharedClientFromPool:basePath];
-
-    return [client dictionary:requestUrl 
-                              method:@"GET" 
-                         queryParams:queryParams 
-                                body:bodyDictionary 
-                        headerParams:headerParams
-                  requestContentType:requestContentType
-                 responseContentType:responseContentType
-                     completionBlock:^(NSDictionary *data, NSError *error) {
-                        if (error) {
-                            completionBlock(nil, error);return;
-                        }
-                        SWGUser *result = nil;
-                        if (data) {
-                            result = [[SWGUser alloc]initWithValues: data];
-                        }
-                        completionBlock(result , nil);}];
     
 
 }

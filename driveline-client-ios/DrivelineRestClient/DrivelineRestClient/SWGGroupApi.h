@@ -12,19 +12,6 @@
 +(NSString*) getBasePath;
 /**
 
- getGroup
- Returns a group based on Group ID. Non-integers will trigger API error conditions
- @param email Requesting User's email address for authorization purposes
- @param password Requesting User's password for authorization purposes (original)
- @param groupId ID of group that needs to be fetched
- */
--(NSNumber*) getGroupByIdWithCompletionBlock :(NSString*) email 
-        password:(NSString*) password 
-        groupId:(NSNumber*) groupId 
-        completionHandler: (void (^)(SWGGroup* output, NSError* error))completionBlock;
-
-/**
-
  Finds groups by keyword
  Performs a search on all groups that contain the specified character combination.
  @param email Requesting User's email address for authorization purposes
@@ -64,6 +51,19 @@
 
 /**
 
+ getGroup
+ Returns a group based on Group ID. Non-integers will trigger API error conditions
+ @param email Requesting User's email address for authorization purposes
+ @param password Requesting User's password for authorization purposes (original)
+ @param groupId ID of group that needs to be fetched
+ */
+-(NSNumber*) getGroupByIdWithCompletionBlock :(NSString*) email 
+        password:(NSString*) password 
+        groupId:(NSNumber*) groupId 
+        completionHandler: (void (^)(SWGGroup* output, NSError* error))completionBlock;
+
+/**
+
  createGroupAsAdmin
  Adds a new group and adds the current user as the first admin member
  @param email Requesting User's email address for authorization purposes
@@ -83,13 +83,28 @@
  @param password Requesting User's password for authorization purposes (original)
  @param groupId Group Id of the group for which the User requests membership
  @param _newMemberEmail Email of address of the User requesting membership
- @param adminStatus User privileges (0 for regular user, 1 for admin)
+ @param adminStatus User privileges (-1 for unverified user, 0 for regular user, 1 for admin)
  */
 -(NSNumber*) addUserToGroupWithCompletionBlock :(NSString*) email 
         password:(NSString*) password 
         groupId:(NSNumber*) groupId 
         _newMemberEmail:(NSString*) _newMemberEmail 
         adminStatus:(NSNumber*) adminStatus 
+        completionHandler: (void (^)(NSError* error))completionBlock;
+
+/**
+
+ Accept User to Group
+ Modify a particular User's admin status such that they have driving/riding permissions for a group
+ @param email Requesting User's email address for authorization purposes (original)
+ @param password Requesting User's password for authorization purposes (original)
+ @param acceptedUserEmail Updated user object
+ @param acceptingGroupId Updated user object
+ */
+-(NSNumber*) acceptUserToGroupWithCompletionBlock :(NSString*) email 
+        password:(NSString*) password 
+        acceptedUserEmail:(NSString*) acceptedUserEmail 
+        acceptingGroupId:(NSNumber*) acceptingGroupId 
         completionHandler: (void (^)(NSError* error))completionBlock;
 
 /**

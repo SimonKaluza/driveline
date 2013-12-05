@@ -1,2 +1,5 @@
 .DS_Store
 driveline-server-jaxrs/.idea
+driveline-server-jaxrs/driveline-jaxws.iml
+driveline-server-jaxrs/replace-mypass.sh
+driveline-server-jaxrs/replace-gitpass.sh

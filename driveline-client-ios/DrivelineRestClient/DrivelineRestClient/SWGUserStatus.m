@@ -3,11 +3,11 @@
 
 @implementation SWGUserStatus
 
--(id)groupId: (NSNumber*) groupId
-    status: (NSNumber*) status
+-(id)status: (NSNumber*) status
+    groupId: (NSNumber*) groupId
 {
-  _groupId = groupId;
   _status = status;
+  _groupId = groupId;
   return self;
 }
 
@@ -15,8 +15,8 @@
 {
     self = [super init];
     if(self) {
-        _groupId = dict[@"groupId"]; 
         _status = dict[@"status"]; 
+        _groupId = dict[@"groupId"]; 
         
 
     }
@@ -25,8 +25,8 @@
 
 -(NSDictionary*) asDictionary {
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-    if(_groupId != nil) dict[@"groupId"] = _groupId ;
-        if(_status != nil) dict[@"status"] = _status ;
+    if(_status != nil) dict[@"status"] = _status ;
+        if(_groupId != nil) dict[@"groupId"] = _groupId ;
         NSDictionary* output = [dict copy];
     return output;
 }

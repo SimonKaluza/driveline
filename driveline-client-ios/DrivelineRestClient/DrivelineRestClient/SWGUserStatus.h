@@ -3,12 +3,12 @@
 
 @interface SWGUserStatus : SWGObject
 
-@property(nonatomic) NSNumber* groupId;  
-
 @property(nonatomic) NSNumber* status;  
 
-- (id) groupId: (NSNumber*) groupId
-     status: (NSNumber*) status;
+@property(nonatomic) NSNumber* groupId;  
+
+- (id) status: (NSNumber*) status
+     groupId: (NSNumber*) groupId;
 
 - (id) initWithValues: (NSDictionary*)dict;
 - (NSDictionary*) asDictionary;

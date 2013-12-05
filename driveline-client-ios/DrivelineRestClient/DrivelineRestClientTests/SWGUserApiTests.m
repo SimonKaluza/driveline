@@ -42,6 +42,12 @@
 - (void) testCRUDGroup
 {
     TestHelper* testHelper = [[TestHelper alloc ] init];
+    
+    // Create Temporary user for authorization purposes
+    SWGUser* user = [TestHelper instantiateUser:EMAIL password:PASSWORD firstName:FIRSTNAME lastName:LASTNAME phone:PHONE userStatus:USER_STATUS seats:SEATS];
+    [testHelper deleteUser: user testCaller: nil]; // Clear the user in case it already existed from previous test
+    [testHelper createUser: user testCaller: nil];
+    
     SWGGroup* group = [TestHelper instantiateGroup:NAME description:DESCRIPTION adminEmail:ADMIN_EMAIL address:ADDRESS deleted:DELETED];
     [testHelper deleteGroup:group testCaller: nil]; // Clear the group in case it existed from previous test
     [testHelper createGroup: group testCaller: self];
@@ -49,6 +55,8 @@
     group = testHelper.lastCreatedGroup;
     [testHelper readGroup:group testCaller: self];
     [testHelper deleteGroup:group testCaller: self];
+    
+    [testHelper deleteUser: user testCaller: nil]; // Clear the user in case it already existed from previous test
 }
 
 - (void) assertNotNil: (NSError *) error
