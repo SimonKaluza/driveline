@@ -5,15 +5,26 @@
 // Master's Project -- Driveline
 
 #import "MyGroupsDetailViewController.h"
+#define PENDING_SECTION 3
+#define BUTTON_SECTION 2
+#define ADDRESS_SECTION 1
+#define DESCRIPTION_SECTION 0
 
 @interface MyGroupsDetailViewController ()
 @property SWGGroup* group;
 @property SWGGroupApi* groupApi;
+@property NSMutableArray* users;
+
+@property SWGUser* selectedUser; // Pending request User last selected for verification
+@property NSIndexPath* selectedIndexPath; // Index path of User last selected for verification
 @end
 
 @implementation MyGroupsDetailViewController
 @synthesize group;
 @synthesize groupApi;
+@synthesize users;
+@synthesize selectedUser;
+@synthesize selectedIndexPath;
 
 // ============================================================================
 #pragma mark - UIViewController Messages for Groups Detail
@@ -25,6 +36,9 @@
         self.title = groupModel.name;
         self.group = groupModel;
         self.groupApi = [[SWGGroupApi alloc] init];
+        self.users = [[NSMutableArray alloc] init];
+        [[DataManager sharedSingleton] refreshUserListForGroupId:group._id];
+        [[DataManager sharedSingleton] registerUserListUpdateListener:self];
     }
     return self;
 }
@@ -32,6 +46,10 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+-(void) viewDidUnload {
+    [[DataManager sharedSingleton] deregisterUserListUpdateListener:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -45,15 +63,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if ([group.usersAdminStatus isEqual: @1]) return 4;
     return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section){
-        case 0: return 1;
-        case 1: return 2;
-        case 2: return 1;
+        case DESCRIPTION_SECTION: return 1;
+        case ADDRESS_SECTION: return 2;
+        case BUTTON_SECTION: return 1;
+        case PENDING_SECTION: return users.count;
         // Should never reach default
         default: return 0;
     }
@@ -75,13 +95,25 @@
             break;
         case 2: {
             if ([[DataManager sharedSingleton] isCurrentUserInGroup:self.group]){
-                cell.textLabel.text = @"Leave this group";
+                if ([group.usersAdminStatus  isEqual: @1]) {
+                    cell.textLabel.text = @"Delete this group";
+                }
+                else cell.textLabel.text = @"Leave this group";
             }
             else cell.textLabel.text = @"Join this group";
             
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
             break;
+        }
+        case 3: {
+            if (users.count > 0){
+                SWGUser* user = [users objectAtIndex:indexPath.row];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+            }
+            else {
+                cell.textLabel.text = @"No Pending Requests";
+            }
         }
     }
     
@@ -90,11 +122,11 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     switch (section){
-        case 0: return @"Description"; break;
-        case 1: return @"Address"; break;
+        case 0: return @"Description";
+        case 1: return @"Address";
+        case 3: return @"Pending Join Requests";
         default: return nil;
     }
-    return @"My Permissions";
 }
 
 // ============================================================================
@@ -103,7 +135,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ( indexPath.section == 2 && indexPath.row ==0 ){
+    // Handle the "Delete/Leave/Join Group" Button case
+    if ( indexPath.section == BUTTON_SECTION){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if ([[DataManager sharedSingleton] isCurrentUserInGroup:group]){
             [groupApi removeUserFromGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id emailForDeletion: [DataManager sharedSingleton].currentUser.email completionHandler:^(NSError *error) {
@@ -133,6 +166,54 @@
             }];
         }
     }
+    // Handle the "Pending Join Request selection"
+    else if (indexPath.section == PENDING_SECTION) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        selectedUser = [users objectAtIndex:indexPath.row];
+        selectedIndexPath = indexPath;
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle: @"Verify Request" message: [NSString stringWithFormat: @"Allow %@ to ride and drive for %@?", selectedUser.firstName, group.name] delegate:self cancelButtonTitle:@"Reject" otherButtonTitles:@"Accept", nil];
+        [alert show];
+    }
+}
+
+// ============================================================================
+#pragma mark - UIAlertViewDelegate Messages for Groups Detail
+// ============================================================================
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (buttonIndex == [alertView cancelButtonIndex]){
+        [groupApi removeUserFromGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id emailForDeletion:selectedUser.email completionHandler:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (!error) [self removeSelectedUser];
+        }];
+    }
+    else {
+        [groupApi acceptUserToGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password acceptedUserEmail:selectedUser.email acceptingGroupId:group._id completionHandler:^(NSError *error){
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (!error)[self removeSelectedUser];
+        }];
+    }
+    
+}
+
+// ============================================================================
+#pragma mark - UserListUpdateListener Messages for Groups Detail
+// ============================================================================
+- (void) userListUpdateSucceeded:(NSArray*) newUsers removedUsers:(NSArray*) removedUsers {
+    users = [NSMutableArray arrayWithArray:[DataManager sharedSingleton].onlineUsers];
+    [self.tableView reloadData];
+}
+- (void) userListUpdateFailed:(NSString *) message {
+    // Do nothing if we cannot get a new User list successfully (no users will added)
+}
+
+-(void) removeSelectedUser
+{
+    NSArray *tempArray = [[NSArray alloc] initWithObjects: selectedIndexPath, nil];
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:tempArray withRowAnimation:UITableViewRowAnimationFade];
+    [self.users removeObject:selectedUser];
+    [self.tableView endUpdates];
 }
 
 @end

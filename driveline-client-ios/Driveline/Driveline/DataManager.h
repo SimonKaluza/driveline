@@ -34,8 +34,10 @@
 
 @property(atomic, readonly) SWGUser* currentUser;
 @property(atomic, readonly) NSArray* usersGroups;
+
 @property(atomic, readonly) NSArray* onlineUsers;
 @property(atomic, readonly) NSArray* allUsers;
+
 @property(atomic) NSArray* groupStatuses;
 
 + (DataManager *)sharedSingleton;
@@ -51,4 +53,5 @@
 - (void) registerLoginListener: (id<LoginRequestDelegate>) listener;
 - (void) registerGroupListUpdateListener: (id<GroupListUpdateListener>) listener;
 - (void) registerUserListUpdateListener: (id<UserListUpdateListener>) listener;
+- (void) deregisterUserListUpdateListener: (id<UserListUpdateListener>) listener;
 @end

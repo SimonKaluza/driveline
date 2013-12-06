@@ -130,7 +130,7 @@ public class UserSqlDataManager extends SqlDataManager {
             conn = getFreeConnection();
             PreparedStatement stmt = conn.prepareStatement("update `driveline`.`user` "
                     + "set `email`=?, `firstname`=?, `lastname`=?, `phone`=?, `password`=?, `deleted`=?, `seats`=?, "
-                    + "`userstatus`=?, lastLatitude=?, lastLongitude=? where email=?");
+                    + "lastLatitude=?, lastLongitude=? where email=?");
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getFirstName());
             stmt.setString(3, user.getLastName());
@@ -138,10 +138,9 @@ public class UserSqlDataManager extends SqlDataManager {
             stmt.setString(5, user.getPassword());
             stmt.setInt(6, user.getDeleted());
             stmt.setInt(7, user.getSeats());
-            stmt.setInt(8, user.getUserStatus());
-            stmt.setFloat(9, user.getLastLatitude());
-            stmt.setFloat(10, user.getLastLongitude());
-            stmt.setString(11, user.getEmail());
+            stmt.setFloat(8, user.getLastLatitude());
+            stmt.setFloat(9, user.getLastLongitude());
+            stmt.setString(10, user.getEmail());
             int rc = stmt.executeUpdate();
             if (rc == 0){
                 throw new ApiException(404, "No user found with the requested username.  RC was " + rc);

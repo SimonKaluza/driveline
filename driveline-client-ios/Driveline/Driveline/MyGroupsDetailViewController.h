@@ -9,6 +9,6 @@
 #import "SWGGroupApi.h"
 #import "DataManager.h"
 
-@interface MyGroupsDetailViewController : UITableViewController
+@interface MyGroupsDetailViewController : UITableViewController <UserListUpdateListener>
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil group:(SWGGroup *) group;
 @end

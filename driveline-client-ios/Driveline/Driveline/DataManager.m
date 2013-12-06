@@ -161,6 +161,10 @@
     [self.userListUpdateListeners addObject:listener];
 }
 
+- (void) deregisterUserListUpdateListener: (id<UserListUpdateListener>) listener {
+    [self.userListUpdateListeners removeObject:listener];
+}
+
 + (void) retrieveAddedAndDeletedUsers:(NSArray*) oldUsers newUsers: (NSArray*) newUsers addedUsers: (NSMutableArray*) addedUsers deletedUsers: (NSMutableArray*) deletedUsers
 {
     for (int j=0; j<newUsers.count; j++){
