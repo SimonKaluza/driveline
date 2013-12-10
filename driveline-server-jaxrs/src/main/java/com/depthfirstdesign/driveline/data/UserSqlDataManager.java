@@ -90,8 +90,9 @@ public class UserSqlDataManager extends SqlDataManager {
         try{
             conn = getFreeConnection();
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO `driveline`.`user` "
-                    + "(`email`, `firstname`, `lastname`, `phone`, `password`, `deleted`, `seats`)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?);");
+                    + "(`email`, `firstname`, `lastname`, `phone`, `password`, `deleted`, `seats`," +
+                    "   `lastLatitude`, `lastLongitude`)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getFirstName());
             stmt.setString(3, user.getLastName());
@@ -99,6 +100,10 @@ public class UserSqlDataManager extends SqlDataManager {
             stmt.setString(5, user.getPassword());
             stmt.setInt(6, 0);
             stmt.setInt(7, user.getSeats());
+            // Users location is initially unknown so position cooridinates
+            // larger than 999 are treated as invalid by client apps
+            stmt.setFloat(8, 999f);
+            stmt.setFloat(9, 999f);
             int rc = stmt.executeUpdate();
             if (rc != 1){
                 throw new ApiException(500, "A non-cardinal number returned from User insert statement.  RC was " + rc);
