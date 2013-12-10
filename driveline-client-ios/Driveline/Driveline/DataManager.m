@@ -64,6 +64,12 @@
     return [allUsers filteredArrayUsingPredicate:userPredicate];
 }
 
+- (NSArray*) nonVerifiedUsers
+{
+    NSPredicate *nonVerifiedPredicate = [NSPredicate predicateWithFormat:@"admin == %@", @-1];
+    return [allUsers filteredArrayUsingPredicate:nonVerifiedPredicate];
+}
+
 - (BOOL) isCurrentUserInGroup: (SWGGroup *) group {
     NSPredicate *groupPredicate = [NSPredicate predicateWithFormat:@"name = %@", group.name];
     if ([usersGroups filteredArrayUsingPredicate:groupPredicate].count > 0) return YES;

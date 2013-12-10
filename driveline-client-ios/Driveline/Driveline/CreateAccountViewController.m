@@ -84,6 +84,9 @@
 
 -(void)tryCreate
 {
+    // Do preliminary field validation:
+    if (![self areTextFieldsValid]) return;
+    
     [registerButton setEnabled:NO];
     SWGUser* user = [[SWGUser alloc] init];
     user.email = emailTf.text;
@@ -93,7 +96,6 @@
     // String out the special formatting characters of the view element's phone number
     user.phone = [[[[phoneNumberTf.text
                     stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"(" withString:@""] stringByReplacingOccurrencesOfString:@")" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
     [userApi createUserWithCompletionBlock:user completionHandler:^(NSError *error) {
         if (error){
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Account Creation Failed" message:@"Please try again with the correct input fields" delegate:self.parentViewController cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -117,5 +119,39 @@
     [self.view endEditing:YES];
 }
 
+// Verify all TextFields in View have sensible values.
+- (BOOL) areTextFieldsValid
+{
+    // Verify that the password fields match
+    if (![passwordTf.text isEqualToString:verifyTf.text]){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Check Passwords" message:@"Password fields do not match!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return NO;
+    }
+    // Validate all fields to make sure more than whitespace is present
+    if ([self isTextFieldEmpty:emailTf name:@"email"]) return NO;
+    if ([self isTextFieldEmpty:passwordTf name:@"password"]) return NO;
+    if ([self isTextFieldEmpty:verifyTf name:@"password verification"]) return NO;
+    if ([self isTextFieldEmpty:firstNameTf name:@"first name"]) return NO;
+    if ([self isTextFieldEmpty:lastNameTf name:@"last name"]) return NO;
+    if ([self isTextFieldEmpty:phoneNumberTf name:@"phone number"]) return NO;
+    
+    return YES;
+}
+
+// Verify a particular field is not empty
+- (BOOL) isTextFieldEmpty:(UITextField*) textField name: (NSString*) name
+{
+    NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+    if ([[textField.text stringByTrimmingCharactersInSet: set] length] == 0)
+    {
+        // String contains only whitespace
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Empty %@", name] message:[NSString stringWithFormat:@"Please enter a valid %@", name] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return YES;
+        
+    }
+    return NO;
+}
 
 @end

@@ -37,6 +37,7 @@
 
 @property(atomic, readonly) NSArray* onlineUsers;
 @property(atomic, readonly) NSArray* allUsers;
+@property(atomic, readonly) NSArray* nonVerifiedUsers;
 
 @property(atomic) NSArray* groupStatuses;
 

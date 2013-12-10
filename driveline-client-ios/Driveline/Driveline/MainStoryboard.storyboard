@@ -202,7 +202,7 @@
                                 <items>
                                     <tabBarItem tag="1" title="Drivers" image="find_user" id="zwF-Ck-Nlf"/>
                                     <tabBarItem tag="2" title="Groups" image="group" id="hPb-Tv-lA2"/>
-                                    <tabBarItem tag="3" title="Settings" image="settings" id="FMN-KW-RRN"/>
+                                    <tabBarItem tag="3" title="Sign Out" image="settings" id="FMN-KW-RRN" userLabel="Tab Bar Item - Logout"/>
                                 </items>
                                 <connections>
                                     <outlet property="delegate" destination="ejb-Cg-JIu" id="f4j-xo-xTW"/>

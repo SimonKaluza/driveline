@@ -139,31 +139,13 @@
     if ( indexPath.section == BUTTON_SECTION){
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if ([[DataManager sharedSingleton] isCurrentUserInGroup:group]){
-            [groupApi removeUserFromGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id emailForDeletion: [DataManager sharedSingleton].currentUser.email completionHandler:^(NSError *error) {
-                if (error){
-                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Failed to leave group" message: @"Could not leave the selected group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alert show];
-                }
-                else {
-                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Left group" message: @"Successfully left the group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alert show];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            }];
+            if ([group.usersAdminStatus isEqualToNumber:@1]){
+                [self deleteGroup];
+            }
+            else [self leaveGroup];
         }
         else {
-            __weak MyGroupsDetailViewController* weakSelf = self;
-            [ groupApi addUserToGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id _newMemberEmail:[DataManager sharedSingleton].currentUser.email adminStatus:@-1 completionHandler:^(NSError *error) {
-                if (error){
-                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Failed to join group" message: @"Could not join the selected group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alert show];
-                }
-                else {
-                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Joined group" message: @"Successfully joined the group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alert show];
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
-                }
-            }];
+            [self requestGroupMembership];
         }
     }
     // Handle the "Pending Join Request selection"
@@ -200,11 +182,61 @@
 #pragma mark - UserListUpdateListener Messages for Groups Detail
 // ============================================================================
 - (void) userListUpdateSucceeded:(NSArray*) newUsers removedUsers:(NSArray*) removedUsers {
-    users = [NSMutableArray arrayWithArray:[DataManager sharedSingleton].onlineUsers];
+    users = [NSMutableArray arrayWithArray:[DataManager sharedSingleton].nonVerifiedUsers];
     [self.tableView reloadData];
 }
 - (void) userListUpdateFailed:(NSString *) message {
     // Do nothing if we cannot get a new User list successfully (no users will added)
+}
+
+// ============================================================================
+#pragma mark - Network-related messages (for group administration)
+// ============================================================================
+
+-(void) leaveGroup
+{
+    [groupApi removeUserFromGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id emailForDeletion: [DataManager sharedSingleton].currentUser.email completionHandler:^(NSError *error) {
+        if (error){
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Failed to leave group" message: @"Could not leave the selected group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+        else {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Left group" message: @"Successfully left the group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+}
+
+-(void) deleteGroup
+{
+    [groupApi deleteGroupWithCompletionBlock: [DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password idForDeletion:group._id completionHandler:^(NSError *error) {
+        if (error){
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Failed to delete group" message: @"Could not delete the selected group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+        else {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Deleted group" message: @"Successfully deleted the group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+}
+
+-(void) requestGroupMembership
+{
+    __weak MyGroupsDetailViewController* weakSelf = self;
+    [ groupApi addUserToGroupWithCompletionBlock:[DataManager sharedSingleton].currentUser.email password:[DataManager sharedSingleton].currentUser.password groupId:group._id _newMemberEmail:[DataManager sharedSingleton].currentUser.email adminStatus:@-1 completionHandler:^(NSError *error) {
+        if (error){
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Failed to join group" message: @"Could not join the selected group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+        else {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Joined group" message: @"Successfully joined the group" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 }
 
 -(void) removeSelectedUser
@@ -215,5 +247,4 @@
     [self.users removeObject:selectedUser];
     [self.tableView endUpdates];
 }
-
 @end

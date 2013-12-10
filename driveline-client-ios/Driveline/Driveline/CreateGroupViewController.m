@@ -74,6 +74,8 @@
 
 -(void)tryCreate
 {
+    if (![self areTextFieldsValid]) return;
+    
     SWGGroupApi *groupApi = [[SWGGroupApi alloc] init];
     SWGGroup* group = [[SWGGroup alloc] init];
     group.name = groupNameTf.text;
@@ -97,5 +99,34 @@
 - (IBAction)pushedCreateButton:(id)sender {
     [self.view endEditing:YES];
     [self tryCreate];
+}
+
+// Verify all TextFields in View have sensible values.
+- (BOOL) areTextFieldsValid
+{
+    // Validate all fields to make sure more than whitespace is present
+    if ([self isTextFieldEmpty:groupNameTf name:@"group"]) return NO;
+    if ([self isTextFieldEmpty:descriptionTf name:@"description"]) return NO;
+    if ([self isTextFieldEmpty:streetAddressTf name:@"street address"]) return NO;
+    if ([self isTextFieldEmpty:cityTf name:@"city"]) return NO;
+    if ([self isTextFieldEmpty:stateTf name:@"state"]) return NO;
+    if ([self isTextFieldEmpty:zipTf name:@"zip code"]) return NO;
+    
+    return YES;
+}
+
+// Verify a particular field is not empty
+- (BOOL) isTextFieldEmpty:(UITextField*) textField name: (NSString*) name
+{
+    NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+    if ([[textField.text stringByTrimmingCharactersInSet: set] length] == 0)
+    {
+        // String contains only whitespace
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Empty %@", name] message:[NSString stringWithFormat:@"Please enter a valid %@", name] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return YES;
+        
+    }
+    return NO;
 }
 @end

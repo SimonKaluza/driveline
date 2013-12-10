@@ -283,9 +283,12 @@ static NSString *VanillaCellIdentifier = @"VanillaCell";
 - (NSString*) getStringDistanceFromUser:(SWGUser*) user
 {
     SWGUser* currentUser = [DataManager sharedSingleton].currentUser;
+    // Return if no valid location data exists about the user (indicated in database by latitude > 999)
+    if (user.lastLatitude.doubleValue >= 999) return @"No location data available";
     CLLocation *currentLoc = [[CLLocation alloc] initWithLatitude: user.lastLatitude.doubleValue longitude:user.lastLongitude.doubleValue];
     CLLocation *otherLoc = [[CLLocation alloc] initWithLatitude: currentUser.lastLatitude.doubleValue longitude:currentUser.lastLongitude.doubleValue];
     CLLocationDistance distance = [currentLoc distanceFromLocation:otherLoc];
-    return [NSString stringWithFormat:@"%f meters", distance ];
+    // Format the string but convert from meters to miles first
+    return [NSString stringWithFormat:@"%.1f miles away", distance / 1609.344];
 }
 @end
