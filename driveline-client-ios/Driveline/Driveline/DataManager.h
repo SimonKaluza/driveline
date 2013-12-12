@@ -34,6 +34,7 @@
 
 @property(atomic, readonly) SWGUser* currentUser;
 @property(atomic, readonly) NSArray* usersGroups;
+@property(atomic, readonly) NSArray* usersVerifiedGroups;
 
 @property(atomic, readonly) NSArray* onlineUsers;
 @property(atomic, readonly) NSArray* allUsers;
@@ -43,6 +44,7 @@
 
 + (DataManager *)sharedSingleton;
 
+// Determine if a specified user belongs to the particular Driveline group
 - (BOOL) isCurrentUserInGroup: (SWGGroup *) group;
 
 - (void) sendCurrentUserUpdate;

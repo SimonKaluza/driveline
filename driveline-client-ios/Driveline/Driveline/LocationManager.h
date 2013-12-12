@@ -12,5 +12,6 @@
 
 + (LocationManager *) sharedSingleton;
 - (void)startStandardUpdates;
+- (void)stopStandardUpdates;
 
 @end

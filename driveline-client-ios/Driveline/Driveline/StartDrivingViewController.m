@@ -31,7 +31,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [DataManager sharedSingleton].usersGroups.count;
+    return [DataManager sharedSingleton].usersVerifiedGroups.count;
 } 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -98,6 +98,6 @@
 
 - (SWGGroup*) getGroupForIndexPath: (NSIndexPath*) indexPath
 {
-    return [[DataManager sharedSingleton].usersGroups  objectAtIndex:indexPath.row];
+    return [[DataManager sharedSingleton].usersVerifiedGroups  objectAtIndex:indexPath.row];
 }
 @end

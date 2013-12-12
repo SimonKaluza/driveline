@@ -64,6 +64,12 @@
     return [allUsers filteredArrayUsingPredicate:userPredicate];
 }
 
+- (NSArray*) usersVerifiedGroups {
+    NSPredicate *groupPredicate = [NSPredicate predicateWithFormat:@"usersAdminStatus != %@", @-1];
+    
+    return [usersGroups filteredArrayUsingPredicate:groupPredicate];
+}
+
 - (NSArray*) nonVerifiedUsers
 {
     NSPredicate *nonVerifiedPredicate = [NSPredicate predicateWithFormat:@"admin == %@", @-1];
@@ -71,7 +77,7 @@
 }
 
 - (BOOL) isCurrentUserInGroup: (SWGGroup *) group {
-    NSPredicate *groupPredicate = [NSPredicate predicateWithFormat:@"name = %@", group.name];
+    NSPredicate *groupPredicate = [NSPredicate predicateWithFormat:@"_id = %@", group._id];
     if ([usersGroups filteredArrayUsingPredicate:groupPredicate].count > 0) return YES;
     return NO;
 }
@@ -80,16 +86,19 @@
 {
     [userApi getUserWithCompletionBlock:email password:password requestedUserEmail: email completionHandler: ^(SWGUser *output, NSError *error) {
         currentUser = output;
+        // Upon successful callback, send a request for the logged in user's statuses
         if (output) {
             [userApi getUserStatusesWithCompletionBlock:currentUser.email password:currentUser.password requestedUserEmail:currentUser.email completionHandler:^(NSArray *output, NSError *error) {
+                // Begin sending asynchronous location updating and sending to server
                 if (output){
                     [[LocationManager sharedSingleton] startStandardUpdates];
                     groupStatuses = output;
                     for (id<LoginRequestDelegate> listener in self.loginListeners)
                         [listener receiveLoginResponse];
                 }
-                // Handle error
+                // Pass error to listeners and abort login
                 else{
+                    currentUser = nil;
                     for (id<LoginRequestDelegate> listener in self.loginListeners)
                         [listener receiveLoginFailure:error.description];
                 }
@@ -142,6 +151,8 @@
 
 - (void) logout
 {
+    [[LocationManager sharedSingleton] stopStandardUpdates];
+    
     groupListUpdateListeners = [[NSMutableArray alloc] init];
     userListUpdateListeners = [[NSMutableArray alloc] init];
     

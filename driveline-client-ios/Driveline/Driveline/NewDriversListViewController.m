@@ -155,7 +155,7 @@ static NSString *VanillaCellIdentifier = @"VanillaCell";
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [DataManager sharedSingleton].usersGroups.count;
+    return [DataManager sharedSingleton].usersVerifiedGroups.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -206,7 +206,7 @@ static NSString *VanillaCellIdentifier = @"VanillaCell";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    if ([DataManager sharedSingleton].usersGroups.count > 0){
+    if ([DataManager sharedSingleton].usersVerifiedGroups.count > 0){
         group = [self getGroupForRow:row];
         [groupTextField setText:group.name];
         [self sendUserListRefreshRequest];
@@ -272,7 +272,7 @@ static NSString *VanillaCellIdentifier = @"VanillaCell";
 }
 
 - (SWGGroup*) getGroupForRow: (NSInteger) row {
-    return [[DataManager sharedSingleton].usersGroups objectAtIndex:row];
+    return [[DataManager sharedSingleton].usersVerifiedGroups objectAtIndex:row];
 }
 
 - (void)contentSizeCategoryChanged:(NSNotification *)notification

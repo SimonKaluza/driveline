@@ -40,6 +40,12 @@
     [locationManager startUpdatingLocation];
 }
 
+// Stop the standard update process (usually after User logout)
+- (void)stopStandardUpdates
+{
+    [locationManager stopUpdatingLocation];
+}
+
 // Delegate method from the CLLocationManagerDelegate protocol.
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power.
