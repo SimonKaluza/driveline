@@ -37,16 +37,6 @@ CREATE TABLE `group` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `group`
---
-
-LOCK TABLES `group` WRITE;
-/*!40000 ALTER TABLE `group` DISABLE KEYS */;
-INSERT INTO `group` VALUES (1,'A local safe rides for East Haven, run out of a local residence.','0','37 1st Ave, East Haven, CT','kaluza.simon@gmail.com','East Haven Safe Rides',NULL,NULL,NULL),(6,'A Safe Rides group for University of New Haven','0','West Haven, CT','kaluza.simon@gmail.com','UNH Safe Rides',NULL,NULL,NULL),(7,'Providing transport and carpooling services for employees of 3M','0','100 Barnes Rd, Wallingford, CT','spkaluza@mmm.com','3M Safe Rides',NULL,NULL,NULL),(8,'Some random new SafeRide group!','0','94 Some Random Rd., Some Town, CT 06443','uberl33tadmin@driveline.com','New SafeRide Group',NULL,NULL,NULL),(62,'The first group to be created through the Driveline App','0','100 Barnes Rd.','kaluza.simon@gmail.com','iOS-Created Group!',NULL,NULL,NULL),(63,'','0','','kaluza.simon@gmail.com','Blah group!',NULL,NULL,NULL),(64,'','0','','kaluza.simon@gmail.com','DOH!',NULL,NULL,NULL),(68,'asdf','0','','kaluza.simon@gmail.com','sadf',NULL,NULL,NULL),(69,'','0','','kaluza.simon@gmail.com','dsfas',NULL,NULL,NULL),(70,'A carpool for commercial Linux users!','0','Somewhere in Africa','mark.shuttleworth@ubuntu.com','Ubuntu Car Pool',NULL,NULL,NULL),(71,'Some random new SafeRide group!','0','94 Some Random Rd., Some Town, CT 06443','uberl33tadmin@driveline.com','New SafeRide Group',NULL,NULL,NULL),(73,'Some random new SafeRide group!','0','94 Some Random Rd., Some Town, CT 06443','uberl33tadmin@driveline.com','New SafeRide Group',NULL,NULL,NULL);
-/*!40000 ALTER TABLE `group` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -68,16 +58,6 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('','','','','',0,0,NULL,NULL),('admin@depthfirstdesign.com','Master','Admin','7777777777','inn0vat3',0,0,NULL,NULL),('alice@we2skate.net','Alice','Fischer','2036666666','elizanewhaven',0,4,NULL,NULL),('blah','string','string','string','string',0,4,NULL,NULL),('bobooo','string','string','string','string',0,4,NULL,NULL),('jeanvaljean@lesmis.com','Jean','Valjean','2035456789','whoami',0,1,NULL,NULL),('kaluza.simon@gmail.com','Simon','Kaluza','2034153846','dude',0,0,37.333828000,-122.072360000),('madden@nfl.com','John','Madden','2035553453','football',0,0,NULL,NULL),('mark.shuttleworth@ubuntu.com','Mark','Shuttleworth','5555555555','ubuntu',0,0,NULL,NULL),('mfunaro@gmail.com','Michael','Funaro','2035555555','haloforever',0,4,NULL,NULL),('ndimucci84@gmail.com','Nicholas','DiMucci','2034444444','monkeyisland',0,4,NULL,NULL),('steve.jobs@apple.com','Steve','Jobs','5555555555','blah',0,0,NULL,NULL),('Steven@gmail.com','Steven','Jackson','2035555555','superpass',0,4,NULL,NULL);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_group`
 --
 
@@ -97,15 +77,6 @@ CREATE TABLE `user_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `user_group`
---
-
-LOCK TABLES `user_group` WRITE;
-/*!40000 ALTER TABLE `user_group` DISABLE KEYS */;
-INSERT INTO `user_group` VALUES (1,'kaluza.simon@gmail.com',0,1),(1,'mark.shuttleworth@ubuntu.com',1,0),(1,'mfunaro@gmail.com',1,0),(6,'kaluza.simon@gmail.com',0,0),(6,'mark.shuttleworth@ubuntu.com',0,0),(6,'ndimucci84@gmail.com',1,0),(7,'kaluza.simon@gmail.com',0,0),(7,'mfunaro@gmail.com',0,0),(7,'ndimucci84@gmail.com',1,0),(62,'kaluza.simon@gmail.com',0,0),(63,'kaluza.simon@gmail.com',0,-1),(70,'mark.shuttleworth@ubuntu.com',0,1),(70,'steve.jobs@apple.com',1,0);
-/*!40000 ALTER TABLE `user_group` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
